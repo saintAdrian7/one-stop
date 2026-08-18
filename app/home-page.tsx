@@ -863,10 +863,7 @@ export default function HomePage() {
                 <br />
                 Open 8:00 am &ndash; 5:30 pm
               </p>
-              <div className="font-heading" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                <a href="tel:+254717617470" className="contact-phone">0717 617 470</a>
-                <a href="tel:+254103441698" className="contact-phone">0103 441 698</a>
-              </div>
+             
               <div style={{ height: 220, borderRadius: 16, overflow: "hidden", filter: "saturate(.9)", position: "relative" }}>
                 <Image src="/images/clinic-sign.jpeg" alt="One Stop Medical Imaging Center clinic signage" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover" }} />
               </div>
