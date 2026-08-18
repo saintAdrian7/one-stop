@@ -259,13 +259,25 @@ button {
 }
 .hero-title {
   font-family: var(--font-heading);
-  font-size: clamp(26px, 3.6vw - 8px, 64px);
+  font-size: clamp(44px, 6.9vw - 14px, 82px);
   font-weight: 800;
-  line-height: 1.02;
+  line-height: 1.04;
   letter-spacing: -0.025em;
   color: var(--teal);
   margin: 0 0 24px 0;
   white-space: nowrap;
+}
+.hero-word-accent {
+  color: var(--red);
+}
+.hero-word-accent::after {
+  content: "";
+  display: block;
+  width: 1.6em;
+  height: 0.06em;
+  margin-top: 0.08em;
+  border-radius: 2px;
+  background: var(--gold);
 }
 .hero-word-mask {
   display: block;
@@ -881,7 +893,7 @@ button {
     position: relative;
   }
   .hero-title {
-    font-size: clamp(19px, 7.8vw - 4px, 44px);
+    font-size: clamp(34px, 14.5vw - 8px, 64px);
   }
   .services-media {
     position: static;

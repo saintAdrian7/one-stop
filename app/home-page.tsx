@@ -229,7 +229,11 @@ export default function HomePage() {
     gsap.registerPlugin(ScrollTrigger);
     const EASE = "expo.out";
     const ctx = gsap.context(() => {
-      gsap.fromTo(".hero-word", { yPercent: 110 }, { yPercent: 0, duration: 0.85, ease: EASE, stagger: 0.12, delay: 0.15 });
+      gsap.fromTo(
+        ".hero-word",
+        { yPercent: 115, rotate: 3, transformOrigin: "left bottom" },
+        { yPercent: 0, rotate: 0, duration: 1, ease: EASE, stagger: 0.14, delay: 0.15 }
+      );
       gsap.from("[data-hero-in]", { y: 24, opacity: 0, duration: 0.8, ease: EASE, stagger: 0.11, delay: 0.55 });
       gsap.fromTo(
         "[data-hero-img]",
@@ -426,7 +430,10 @@ export default function HomePage() {
           <div className="hero-panel">
             <h1 className="hero-title">
               <span className="hero-word-mask">
-                <span className="hero-word">Clear Scans. Caring Hands.</span>
+                <span className="hero-word">Clear Scans.</span>
+              </span>
+              <span className="hero-word-mask">
+                <span className="hero-word hero-word-accent">Caring Hands.</span>
               </span>
             </h1>
             <p data-hero-in style={{ margin: "0 0 36px 0", fontSize: 17, lineHeight: 1.6, color: "rgba(34,37,43,.7)", maxWidth: "40ch" }}>
