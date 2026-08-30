@@ -176,9 +176,16 @@ function Wordmark({ inverted = false }: { inverted?: boolean }) {
   );
 }
 
+const EDUCATION = [
+  { school: "Chaffey Community College", place: "California" },
+  { school: "California State University, San Bernardino", place: "San Bernardino, California" },
+  { school: "Modern Technology School", place: "Anaheim, California" },
+];
+
 const NAV_ITEMS = [
   { id: "services", label: "Services" },
   { id: "why", label: "Why Us" },
+  { id: "owner", label: "About" },
   { id: "how", label: "How It Works" },
   { id: "reviews", label: "Reviews" },
   { id: "contact", label: "Contact" },
@@ -653,6 +660,60 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* MEET THE OWNER */}
+        <section id="owner" className="data-sec" style={{ maxWidth: 1240, margin: "0 auto", padding: "130px 24px", boxSizing: "border-box" }}>
+          <div className="data-cols" style={{ display: "flex", gap: 80, alignItems: "center" }}>
+            <div data-anim className="owner-media">
+              <div className="owner-media-frame">
+                <Image
+                  src="/images/owner.jpeg"
+                  alt="The owner of One Stop Medical Imaging Center"
+                  fill
+                  sizes="(max-width: 900px) 100vw, 42vw"
+                  style={{ objectFit: "cover", objectPosition: "50% 18%" }}
+                />
+                <div style={{ position: "absolute", inset: 0, background: "#0F5257", opacity: 0.05, pointerEvents: "none" }} />
+                <div className="font-heading owner-badge">
+                  <span style={{ color: "#B22234" }}>25</span>&nbsp;YEARS OF EXPERIENCE
+                </div>
+              </div>
+            </div>
+            <div style={{ flex: 1.1, minWidth: 0 }}>
+              <p data-anim className="font-heading owner-eyebrow">MEET THE OWNER</p>
+              <h2 data-anim className="section-title" style={{ maxWidth: "16ch" }}>
+                The caring hands behind your scan.
+              </h2>
+              <div className="gold-rule" style={{ margin: "0 0 36px 0" }} />
+              <p data-anim style={{ margin: "0 0 36px 0", fontSize: 17, lineHeight: 1.75, color: "rgba(34,37,43,.78)", maxWidth: "52ch", textWrap: "pretty" }}>
+                With 25 years of experience in both the USA and Kenya, the founder built One Stop Medical
+                Imaging Center on a simple belief: everyone deserves clear answers, delivered kindly. That experience
+                 and that care is behind every scan we do.
+              </p>
+              <h3 data-anim className="font-heading" style={{ margin: "0 0 20px 0", fontSize: 13, fontWeight: 700, letterSpacing: ".16em", color: "#C9A227" }}>
+                EDUCATION &amp; TRAINING
+              </h3>
+              <ul data-stagger style={{ margin: "0 0 40px 0", padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 18 }}>
+                {EDUCATION.map((e) => (
+                  <li key={e.school} style={{ display: "flex", alignItems: "center", gap: 16 }}>
+                    <span className="owner-edu-icon">
+                      <svg width="20" height="20" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+                        <path d="M2.5 8.5 L11 4.5 L19.5 8.5 L11 12.5 Z" stroke="#C9A227" strokeWidth="1.5" strokeLinejoin="round" />
+                        <path d="M6.5 10.8 V14.5 C6.5 15.8 8.5 17 11 17 C13.5 17 15.5 15.8 15.5 14.5 V10.8" stroke="#C9A227" strokeWidth="1.5" strokeLinecap="round" />
+                        <path d="M19.5 8.5 V13" stroke="#C9A227" strokeWidth="1.5" strokeLinecap="round" />
+                      </svg>
+                    </span>
+                    <span style={{ display: "flex", flexDirection: "column", lineHeight: 1.4 }}>
+                      <strong className="font-heading" style={{ fontSize: 16.5, fontWeight: 700, letterSpacing: "-0.01em", color: "#0F5257" }}>{e.school}</strong>
+                      <span style={{ fontSize: 14, color: "rgba(34,37,43,.6)" }}>{e.place}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+             
+            </div>
+          </div>
+        </section>
+
         {/* HOW IT WORKS */}
         <section id="how" style={{ position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, filter: "saturate(.85)" }}>
@@ -730,9 +791,7 @@ export default function HomePage() {
                 >
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
                     <span className="font-heading" style={{ fontSize: 48, fontWeight: 800, color: "#C9A227", lineHeight: 0.55 }}>&ldquo;</span>
-                    <span style={{ fontSize: 11.5, fontWeight: 600, letterSpacing: ".06em", color: "#9A6F14", background: "rgba(201,162,39,.14)", borderRadius: 999, padding: "5px 12px", whiteSpace: "nowrap" }}>
-                      SAMPLE &middot; REPLACE WITH REAL REVIEW
-                    </span>
+                   
                   </div>
                   <blockquote style={{ margin: 0, fontSize: 17, lineHeight: 1.65, color: "#22252B", flex: 1 }}>{r.quote}</blockquote>
                   <figcaption style={{ display: "flex", alignItems: "center", gap: 14 }}>
