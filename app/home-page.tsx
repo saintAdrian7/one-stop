@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FAQS } from "./site-config";
 
 const CATS = [
   {
@@ -57,33 +58,6 @@ const CATS = [
       { name: "Neck scan", desc: "lumps and swollen glands" },
       { name: "Cranial scan", desc: "gentle infant brain scan" },
     ],
-  },
-];
-
-const FAQS = [
-  {
-    q: "Do I need a doctor’s referral?",
-    a: "No. You can walk in or call to book directly. If your doctor gave you a request form, bring it along so we can focus the scan on what they need to see.",
-  },
-  {
-    q: "How should I prepare for my scan?",
-    a: "For abdominal scans, fast 6–8 hours beforehand. For pelvic and pregnancy scans, arrive with a full bladder. For most other scans no preparation is needed — call us if you’re unsure.",
-  },
-  {
-    q: "Is ultrasound safe during pregnancy?",
-    a: "Yes. Ultrasound uses sound waves, not radiation. It is safe for you and your baby at every stage of pregnancy.",
-  },
-  {
-    q: "How long does a scan take?",
-    a: "Most scans take 15–30 minutes, including time to explain your results.",
-  },
-  {
-    q: "When do I get my results?",
-    a: "The same day. You leave with a clear report to take straight back to your doctor.",
-  },
-  {
-    q: "Do you accept insurance?",
-    a: "[Confirm with clinic] Please call 0717 617 470 and we’ll advise on your cover.",
   },
 ];
 
@@ -401,7 +375,7 @@ export default function HomePage() {
           </nav>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <a href="tel:+254717617470" className="header-call-btn">
-              Call 0717 617 470
+              Book Appointment
             </a>
             <button
               className={`menu-btn${menuOpen ? " open" : ""}`}
@@ -427,7 +401,7 @@ export default function HomePage() {
           ))}
         </nav>
         <a href="tel:+254717617470" className="btn-primary" style={{ textAlign: "center", marginTop: 28 }}>
-          CALL TO BOOK
+          BOOK APPOINTMENT
         </a>
       </div>
 
@@ -449,7 +423,7 @@ export default function HomePage() {
             </p>
             <div data-hero-in style={{ display: "flex", alignItems: "center", gap: 32, flexWrap: "wrap" }}>
               <a href="tel:+254717617470" className="btn-primary">
-                CALL TO BOOK
+                BOOK APPOINTMENT
               </a>
               <a href="#services" onClick={go("services")} className="link-underline">
                 OUR SERVICES
@@ -850,7 +824,7 @@ export default function HomePage() {
               <a href="tel:+254103441698" className="cta-phone">0103 441 698</a>
             </div>
             <a data-anim href="tel:+254717617470" className="cta-btn">
-              CALL NOW
+              BOOK APPOINTMENT
             </a>
           </div>
         </section>

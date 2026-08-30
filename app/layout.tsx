@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Figtree } from "next/font/google";
 import "./globals.css";
+import { FAQS, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "./site-config";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -15,16 +16,59 @@ const figtree = Figtree({
 });
 
 export const metadata: Metadata = {
-  title: "Ultrasound Services in Kutus, Kirinyaga | One Stop Medical Imaging Center",
-  description:
-    "One Stop Medical Imaging Center: accurate, affordable ultrasound in Kutus, Kirinyaga. Pregnancy scans, Doppler studies, abdominal imaging and more. Same-day reports. Call 0717 617 470.",
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  keywords: [
+    "ultrasound Kutus",
+    "ultrasound Kirinyaga",
+    "pregnancy scan Kutus",
+    "pregnancy ultrasound Kirinyaga",
+    "Doppler scan Kenya",
+    "abdominal ultrasound Kutus",
+    "medical imaging Kirinyaga",
+    "One Stop Medical Imaging Center",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_KE",
+    url: "/",
+    siteName: SITE_NAME,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [
+      {
+        url: "/images/hero-photo.jpg",
+        width: 2560,
+        height: 1440,
+        alt: "A caring sonographer performing an ultrasound scan at One Stop Medical Imaging Center in Kutus",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: ["/images/hero-photo.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
-const jsonLd = {
+const clinicJsonLd = {
   "@context": "https://schema.org",
   "@type": "MedicalClinic",
-  name: "One Stop Medical Imaging Center",
+  "@id": `${SITE_URL}/#clinic`,
+  name: SITE_NAME,
   slogan: "Your One Stop Ultrasound Center",
+  url: SITE_URL,
+  image: `${SITE_URL}/images/hero-photo.jpg`,
+  logo: `${SITE_URL}/images/logo-mark.jpg`,
   telephone: ["+254717617470", "+254103441698"],
   address: {
     "@type": "PostalAddress",
@@ -34,10 +78,32 @@ const jsonLd = {
   },
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     opens: "08:00",
     closes: "17:30",
   },
   medicalSpecialty: "Radiology",
+  availableService: [
+    "Pregnancy ultrasound",
+    "Pelvic ultrasound",
+    "Breast ultrasound",
+    "Abdominal ultrasound",
+    "Renal ultrasound",
+    "Prostate ultrasound",
+    "Doppler studies (venous, arterial, carotid)",
+    "Thyroid ultrasound",
+    "Cranial ultrasound",
+  ].map((name) => ({ "@type": "MedicalTest", name })),
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.filter((f) => !f.a.startsWith("[")).map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -46,7 +112,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(clinicJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
         {children}
       </body>
