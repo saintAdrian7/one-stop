@@ -924,6 +924,19 @@ export default function HomePage() {
                   onSubmit={(e) => {
                     e.preventDefault();
                     const fd = new FormData(e.currentTarget);
+                    fetch("https://formsubmit.co/ajax/onestopkutus@gmail.com", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json", Accept: "application/json" },
+                      body: JSON.stringify({
+                        _subject: `New appointment request — ${fd.get("name")}`,
+                        _template: "table",
+                        _captcha: "false",
+                        Name: fd.get("name"),
+                        Phone: fd.get("phone"),
+                        Service: fd.get("service"),
+                        "Preferred date": fd.get("date") || "Not specified",
+                      }),
+                    }).catch(() => {});
                     const lines = [
                       "Hello One Stop Medical Imaging Center, I would like to request an appointment.",
                       `Name: ${fd.get("name")}`,
@@ -965,7 +978,7 @@ export default function HomePage() {
                     REQUEST APPOINTMENT
                   </button>
                   <p style={{ margin: 0, fontSize: 13, opacity: 0.65, lineHeight: 1.5 }}>
-                    Submitting opens WhatsApp with your details ready to send &mdash; we&rsquo;ll call you back to confirm.
+                    Submitting sends your details to our clinic and opens WhatsApp &mdash; we&rsquo;ll call you back to confirm.
                   </p>
                 </form>
               ) : (
